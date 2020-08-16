@@ -3,6 +3,18 @@ import { useContext } from "react";
 import { ThemeContext } from "../contexts/theme-context";
 import { Spacer, Toggle } from "@zeit-ui/react";
 import { Moon, Sun } from "@zeit-ui/react-icons";
+import Dot from '../components/dot';
+
+
+const neon = {
+  white: "#FFFFFF",
+  black: "#0A0901",
+  pink: "#EA39B2",
+  yellow: "#F6E652",
+  blue: "#54AEB9",
+  magenta: "#AD35D8",
+  purple: "#8334F4"
+}
 
 const HomePage = () => {
   const theme = useContext(ThemeContext);
@@ -23,14 +35,24 @@ const HomePage = () => {
             <Toggle onChange={switchThemes}/>
           <Spacer inline x={0.35} />
           <Sun size={16} />
-      </div>
+        </div>
+        <div className="dots">
+          <Dot color={neon.pink} />
+          <Dot color={neon.yellow} />
+          <Dot color={neon.blue} />
+          <Dot color={neon.magenta} />
+          <Dot color={neon.purple} />
+          {theme.themeType === 'dark' ? <Dot color={neon.white} /> : <Dot color={neon.black} />}
+        </div>
+        
       </main>
       <style jsx>{`
-        .theme-ctrl {
+        div {
           display: flex;
           justify-content: center;
           align-items: center;
         }
+        
       `}
       </style>
     </>
