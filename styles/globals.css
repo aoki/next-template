@@ -1,0 +1,12 @@
+
+body {
+    display: grid;
+    grid-template-columns: 100vw;
+    grid-template-rows: 100vh;
+    transition: 0.5s;
+}
+ 
+#__next {
+    justify-self: center;
+    align-self: center;   
+}

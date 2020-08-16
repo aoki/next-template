@@ -1,8 +1,19 @@
-// import App from "next/app";
 import type { AppProps /*, AppContext */ } from 'next/app'
+import { ZeitProvider, CssBaseline } from '@zeit-ui/react'
+import '../styles/globals.css'
+import { ThemeContext, useTheme } from "../contexts/theme-context";
 
 const MyApp = ({ Component, pageProps }: AppProps)  => {
-  return <Component {...pageProps} />
+  const theme = useTheme();
+
+  return (
+    <ZeitProvider theme={{ type: theme.themeType }}>
+      <CssBaseline />
+      <ThemeContext.Provider value={theme}>
+        <Component {...pageProps} />
+      </ThemeContext.Provider>
+    </ZeitProvider>
+  )
 }
 
 // Only uncomment this method if you have blocking data requirements for
